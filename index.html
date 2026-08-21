@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#06081a" />
+    <meta name="description" content="SiriusX Prime — professional FX and CFD trading solutions." />
+    <title>SiriusX Prime | Quantitative Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --ink: #f7faff;
+        --muted: #9ca7bc;
+        --dim: #c6cde0;
+        --bg: #06081a;
+        --card: rgba(10, 15, 38, .78);
+        --line: rgba(128, 150, 200, .18);
+        --cyan: #2bd7ff;
+        --cyan-soft: rgba(43, 215, 255, .13);
+        --grad: linear-gradient(130deg, #7453ff 0%, #278fff 48%, #20ddf1 100%);
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        min-width: 320px;
+        color: var(--ink);
+        background:
+          radial-gradient(ellipse at 76% 14%, rgba(55, 92, 255, .28), transparent 28rem),
+          radial-gradient(ellipse at 10% 45%, rgba(28, 207, 255, .13), transparent 32rem),
+          #06081a;
+        font-family: Barlow, Arial, sans-serif;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        opacity: .55;
+        background-image:
+          radial-gradient(circle at 12% 17%, #fff 0 1px, transparent 1.5px),
+          radial-gradient(circle at 83% 24%, #bdeaff 0 1px, transparent 1.5px),
+          radial-gradient(circle at 62% 78%, #fff 0 1px, transparent 1.4px),
+          radial-gradient(circle at 27% 83%, #9fe9ff 0 1px, transparent 1.5px);
+        background-size: 310px 310px, 420px 420px, 380px 380px, 510px 510px;
+        pointer-events: none;
+      }
+      a { color: inherit; text-decoration: none; }
+      .shell { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+      .ticker {
+        height: 28px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        background: rgba(2, 4, 15, .91);
+        border-bottom: 1px solid var(--line);
+        color: #93a0b9;
+        font-size: 12px;
+        letter-spacing: .03em;
+        white-space: nowrap;
+      }
+      .ticker-track { display: flex; gap: 30px; animation: move 32s linear infinite; }
+      .up { color: #3ee9a6; } .down { color: #ff6e8a; }
+      @keyframes move { to { transform: translateX(-25%); } }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(6, 8, 26, .82);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(16px);
+      }
+      .nav { min-height: 76px; display: flex; align-items: center; gap: 30px; }
+      .brand { display: flex; align-items: center; gap: 11px; min-width: max-content; }
+      .mark {
+        width: 35px; height: 35px; display: grid; place-items: center;
+        background: var(--grad); clip-path: polygon(17% 0, 50% 23%, 83% 0, 63% 50%, 88% 100%, 50% 72%, 12% 100%, 38% 50%);
+        filter: drop-shadow(0 0 12px rgba(42, 208, 255, .6));
+      }
+      .wordmark { font: 800 24px/1 "Barlow Condensed", sans-serif; letter-spacing: .08em; }
+      .wordmark small { display: block; color: var(--cyan); font-size: 8px; letter-spacing: .18em; text-align: right; }
+      .navlinks { display: flex; align-items: center; justify-content: center; gap: 22px; flex: 1; color: #bac4d8; font-size: 14px; }
+      .navlinks a:hover { color: var(--cyan); }
+      .nav-action { display: flex; gap: 10px; align-items: center; }
+      .button {
+        display: inline-flex; justify-content: center; align-items: center; gap: 9px;
+        border-radius: 7px; border: 1px solid transparent; padding: 12px 19px;
+        font: 700 14px/1 "Barlow Condensed", sans-serif; letter-spacing: .08em; text-transform: uppercase;
+        cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      }
+      .button:hover { transform: translateY(-2px); box-shadow: 0 7px 24px rgba(36, 182, 255, .30); }
+      .button.primary { background: var(--grad); color: white; }
+      .button.ghost { border-color: rgba(43, 215, 255, .48); color: var(--cyan); background: rgba(43, 215, 255, .05); }
+      .hero { min-height: 670px; display: grid; place-items: center; text-align: center; padding: 110px 0 84px; }
+      .pill {
+        display: inline-flex; align-items: center; gap: 8px; color: var(--cyan);
+        border: 1px solid rgba(43, 215, 255, .34); background: var(--cyan-soft);
+        border-radius: 999px; padding: 8px 14px; font: 700 12px/1 "Barlow Condensed", sans-serif; letter-spacing: .1em;
+      }
+      h1, h2, h3 { font-family: "Barlow Condensed", sans-serif; text-transform: uppercase; }
+      h1 { margin: 22px 0 20px; font-size: clamp(56px, 9vw, 108px); line-height: .88; letter-spacing: -.015em; }
+      h1 em, h2 em { color: var(--cyan); font-style: italic; }
+      .lede { max-width: 680px; margin: 0 auto; color: var(--dim); font-size: clamp(17px, 2vw, 21px); line-height: 1.6; }
+      .actions { margin: 35px 0 58px; display: flex; justify-content: center; gap: 13px; flex-wrap: wrap; }
+      .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; max-width: 700px; margin: auto; }
+      .stat, .card { border: 1px solid var(--line); border-radius: 10px; background: var(--card); }
+      .stat { padding: 17px 10px; }
+      .stat strong { display: block; color: var(--cyan); font: 800 29px/1 "Barlow Condensed", sans-serif; }
+      .stat span { color: var(--muted); font-size: 12px; }
+      section { padding: 96px 0; }
+      section:nth-of-type(even) { background: rgba(2, 4, 18, .38); border-block: 1px solid rgba(128, 150, 200, .08); }
+      .eyebrow { display: inline-block; color: var(--cyan); background: var(--cyan-soft); border: 1px solid rgba(43, 215, 255, .3); border-radius: 5px; padding: 5px 10px; font: 700 11px/1 "Barlow Condensed", sans-serif; letter-spacing: .1em; }
+      .section-title { max-width: 750px; margin: 13px auto 16px; font-size: clamp(40px, 5vw, 62px); line-height: .92; text-align: center; }
+      .section-copy { max-width: 680px; margin: auto; color: var(--muted); text-align: center; line-height: 1.65; }
+      .center { text-align: center; }
+      .grid { display: grid; gap: 16px; margin-top: 48px; }
+      .grid.three { grid-template-columns: repeat(3, 1fr); }
+      .grid.four { grid-template-columns: repeat(4, 1fr); }
+      .card { padding: 25px; transition: border-color .18s, transform .18s; }
+      .card:hover { border-color: rgba(43, 215, 255, .52); transform: translateY(-3px); }
+      .icon { color: var(--cyan); font-size: 26px; margin-bottom: 18px; }
+      .card h3 { margin: 0 0 9px; font-size: 21px; letter-spacing: .03em; }
+      .card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+      .product { text-align: center; }
+      .product .icon { font-size: 38px; }
+      .tag { display: inline-block; margin-top: 15px; padding: 5px 9px; border-radius: 4px; background: var(--cyan-soft); color: var(--cyan); font: 700 11px/1 "Barlow Condensed", sans-serif; letter-spacing: .07em; }
+      .split { margin-top: 48px; display: grid; grid-template-columns: 1.15fr .85fr; gap: 60px; align-items: center; }
+      .split h2 { font-size: clamp(40px, 5vw, 60px); line-height: .9; margin: 12px 0 21px; }
+      .split p { color: var(--dim); line-height: 1.7; }
+      .checklist { display: grid; gap: 12px; margin: 24px 0 30px; padding: 0; list-style: none; color: var(--dim); }
+      .checklist li::before { content: "›"; color: var(--cyan); font-size: 22px; vertical-align: -2px; padding-right: 10px; }
+      .mini-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+      .mini-stats .card { text-align: center; }
+      .mini-stats strong { display: block; color: var(--cyan); font: 800 27px/1 "Barlow Condensed", sans-serif; }
+      details { border: 1px solid var(--line); border-radius: 9px; background: var(--card); padding: 0 20px; }
+      details + details { margin-top: 10px; }
+      summary { padding: 18px 0; cursor: pointer; font-weight: 600; }
+      details p { color: var(--muted); line-height: 1.65; font-size: 14px; padding-bottom: 18px; }
+      .contact { max-width: 660px; margin: auto; text-align: center; }
+      .contact .orb { font-size: 34px; display: grid; place-items: center; margin: 0 auto 18px; width: 70px; height: 70px; border-radius: 50%; background: var(--cyan-soft); }
+      footer { padding: 46px 0; border-top: 1px solid var(--line); background: rgba(1, 3, 12, .72); }
+      .footer-top { display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+      .footer-top nav { display: flex; flex-wrap: wrap; gap: 17px; color: var(--muted); font-size: 13px; }
+      .legal { margin-top: 31px; padding-top: 23px; border-top: 1px solid var(--line); color: #77839b; font-size: 12px; line-height: 1.65; }
+      .legal p { margin: 9px 0; }
+      @media (max-width: 800px) {
+        .shell { width: min(100% - 28px, 620px); }
+        .nav { min-height: 65px; gap: 12px; }
+        .navlinks { display: none; }
+        .wordmark { font-size: 20px; }
+        .nav-action .ghost { display: none; }
+        .hero { min-height: 630px; padding-top: 80px; }
+        .stats, .grid.four, .grid.three { grid-template-columns: repeat(2, 1fr); }
+        .split { grid-template-columns: 1fr; gap: 34px; }
+        section { padding: 70px 0; }
+        .footer-top { align-items: flex-start; flex-direction: column; }
+      }
+      @media (max-width: 440px) { .stats { gap: 8px; } .stat strong { font-size: 24px; } .actions .button { width: 100%; } }
+    </style>
+  </head>
+  <body>
+    <div class="ticker"><div class="ticker-track">EUR/USD 1.0842 <span class="up">+0.12%</span> · XAU/USD 2,338.40 <span class="up">+0.43%</span> · GBP/USD 1.2748 <span class="down">-0.08%</span> · BTC/USD 67,242 <span class="up">+1.16%</span> · NASDAQ 18,447 <span class="up">+0.21%</span> · EUR/USD 1.0842 <span class="up">+0.12%</span> · XAU/USD 2,338.40 <span class="up">+0.43%</span> · GBP/USD 1.2748 <span class="down">-0.08%</span> · BTC/USD 67,242 <span class="up">+1.16%</span></div></div>
+    <header>
+      <div class="shell nav">
+        <a class="brand" href="#top" aria-label="SiriusX Prime home"><span class="mark"></span><span class="wordmark">SIRIUS X<small>QUANTITATIVE SOLUTIONS</small></span></a>
+        <nav class="navlinks" aria-label="Primary navigation"><a href="#features">Features</a><a href="#tools">Tools</a><a href="#products">Markets</a><a href="#opportunity">IB Program</a><a href="#faq">FAQ</a></nav>
+        <div class="nav-action"><a class="button ghost external-login" href="https://crm.potal-platform.com/login" target="_blank" rel="noopener noreferrer">Log in</a><a class="button primary external-login" href="https://crm.potal-platform.com/login" target="_blank" rel="noopener noreferrer">Sign Up</a></div>
+      </div>
+    </header>
+    <main id="top">
+      <section class="hero">
+        <div class="shell">
+          <span class="pill">✦ AI-POWERED FX &amp; CFD TRADING PLATFORM</span>
+          <h1>Experience <em>Interstellar</em><br />FX Trading</h1>
+          <p class="lede">Propel your trades into another galaxy. Access FX, CFDs, and crypto with up to 1000:1 leverage and AI-powered tools.</p>
+          <div class="actions"><a class="button primary external-login" href="https://crm.potal-platform.com/login" target="_blank" rel="noopener noreferrer">Start Trading →</a><a class="button ghost external-login" href="https://crm.potal-platform.com/login" target="_blank" rel="noopener noreferrer">Client Login</a></div>
+          <div class="stats"><div class="stat"><strong>70+</strong><span>Instruments</span></div><div class="stat"><strong>1000:1</strong><span>Max Leverage</span></div><div class="stat"><strong>24/7</strong><span>Support</span></div><div class="stat"><strong>Web</strong><span>Platform</span></div></div>
+        </div>
+      </section>
+      <section id="features"><div class="shell"><div class="center"><span class="eyebrow">WHY SIRIUS X</span><h2 class="section-title">Built for Precision Traders</h2><p class="section-copy">Professional-grade trading environment with institutional-level tools for every trader.</p></div><div class="grid three"><article class="card"><div class="icon">⚡</div><h3>Ultra-Fast Execution</h3><p>State-of-the-art technology minimizes slippage with lightning-fast order execution.</p></article><article class="card"><div class="icon">◈</div><h3>Segregated Funds</h3><p>Client funds are held in segregated accounts. Your assets are our top priority.</p></article><article class="card"><div class="icon">▥</div><h3>Advanced Analytics</h3><p>Professional-grade charting tools and diverse indicators for precise trading decisions.</p></article><article class="card"><div class="icon">◎</div><h3>Global Market Access</h3><p>Trade FX, indices, commodities, and crypto across 70+ instruments on one platform.</p></article><article class="card"><div class="icon">★</div><h3>Premium Client Services</h3><p>Top clients receive exclusive trading tools and dedicated account management.</p></article><article class="card"><div class="icon">◌</div><h3>24/7 Dedicated Support</h3><p>Multilingual support is available around the clock for all your trading needs.</p></article></div></div></section>
+      <section id="tools"><div class="shell"><div class="center"><span class="eyebrow">AI &amp; AUTO TRADING</span><h2 class="section-title"><em>Intelligent</em> Trading Tools</h2><p class="section-copy">AI-powered tools and automated strategies to maximize your edge in the market.</p></div><div class="grid three"><article class="card"><div class="icon">◉</div><h3>Expert Advisors</h3><p>Curated automated trading strategies running around the clock in the market.</p></article><article class="card"><div class="icon">◌</div><h3>AI Reports</h3><p>Regular AI-powered market analysis reports with trading signals.</p></article><article class="card"><div class="icon">◫</div><h3>Liquidation Map</h3><p>Visualize large position liquidation zones to anticipate market moves.</p></article><article class="card"><div class="icon">⌁</div><h3>Strategy Alerts</h3><p>Real-time alerts from expert analysts. Never miss an opportunity.</p></article><article class="card"><div class="icon">↗</div><h3>Social Copy Trading</h3><p>Automatically copy top-performing traders' strategies.</p></article><article class="card"><div class="icon">✦</div><h3>More Tools</h3><p>Market analysis, risk management, and position management tools.</p></article></div></div></section>
+      <section id="products"><div class="shell"><div class="center"><span class="eyebrow">MARKETS</span><h2 class="section-title">Diverse <em>Asset Classes</em></h2><p class="section-copy">Trade across multiple asset classes with competitive spreads and deep liquidity.</p></div><div class="grid four"><article class="card product"><div class="icon">💱</div><h3>Forex</h3><p>70+ currency pairs</p><span class="tag">Max 1000:1</span></article><article class="card product"><div class="icon">🥇</div><h3>Precious Metals</h3><p>Gold, Silver CFDs</p><span class="tag">Max 200:1</span></article><article class="card product"><div class="icon">📈</div><h3>Indices</h3><p>S&amp;P500, Nasdaq, Nikkei</p><span class="tag">Max 20:1</span></article><article class="card product"><div class="icon">₿</div><h3>Crypto</h3><p>BTC, ETH &amp; more 24/7</p><span class="tag">Max 10:1</span></article></div></div></section>
+      <section id="opportunity"><div class="shell split"><div><span class="eyebrow">IB PROGRAM</span><h2>Grow Your Business<br /><em>with Sirius X</em></h2><p>Join our Introducing Broker program and earn competitive commissions. Access real-time tracking, dedicated support, and powerful tools to grow your network.</p><ul class="checklist"><li>Competitive multi-tier commission structure</li><li>Real-time IB dashboard with full analytics</li><li>Dedicated IB support team</li><li>Marketing materials provided</li></ul><a class="button primary external-login" href="https://crm.potal-platform.com/login" target="_blank" rel="noopener noreferrer">Become an IB →</a></div><div class="mini-stats"><article class="card"><strong>Up to 80%</strong><p>Top IB Commission</p></article><article class="card"><strong>500+</strong><p>Active IBs</p></article><article class="card"><strong>$5,000+</strong><p>Avg. Monthly Earnings</p></article><article class="card"><strong>50+</strong><p>Countries Covered</p></article></div></div></section>
+      <section id="faq"><div class="shell" style="max-width:800px"><div class="center"><span class="eyebrow">FAQ</span><h2 class="section-title">Frequently Asked <em>Questions</em></h2></div><div style="margin-top:42px"><details><summary>How do I open a trading account?</summary><p>Select Sign Up or Start Trading to continue to the client account portal.</p></details><details><summary>What is the minimum deposit?</summary><p>The minimum deposit varies by account type. Please check the account portal for current account conditions.</p></details><details><summary>What platforms does Sirius X support?</summary><p>Sirius X provides a professional web-based trading platform along with desktop and mobile trading applications.</p></details><details><summary>How do I become an Introducing Broker?</summary><p>Select Become an IB to continue to the client account portal and submit your application.</p></details><details><summary>How long do withdrawals take?</summary><p>Withdrawal requests are typically processed within one to three business days after approval, depending on the payment method selected.</p></details></div></div></section>
+      <section id="contact"><div class="shell contact"><div class="orb">✉</div><span class="eyebrow">CONTACT</span><h2 class="section-title">Get in <em>Touch</em></h2><p class="section-copy">Have questions about account opening, IB registration, or trading tools? Our dedicated team is ready to assist you.</p><p style="margin-top:28px"><a class="button primary" href="mailto:support@siriusxprime.com">support@siriusxprime.com</a></p></div></section>
+    </main>
+    <footer><div class="shell"><div class="footer-top"><a class="brand" href="#top"><span class="mark"></span><span class="wordmark">SIRIUS X<small>QUANTITATIVE SOLUTIONS</small></span></a><nav><a href="#features">Features</a><a href="#tools">Tools</a><a href="#products">Markets</a><a href="#opportunity">IB Program</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></nav></div><div class="legal"><p><strong>Company Address:</strong> 111 Somerset Road #06-01R 111 Somerset Singapore (238164) | Registration No: 202419681H</p><p><strong>Risk Warning:</strong> Trading FX and CFDs involves significant risk and may not be suitable for all investors. You may lose more than your initial investment. Please consider your experience, investment objectives, and risk tolerance before trading. This content is for informational purposes only and does not constitute investment advice.</p><p>© 2026 Royce Investment. All rights reserved.</p></div></div></footer>
+  </body>
+</html>
