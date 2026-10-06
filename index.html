@@ -73,14 +73,8 @@
         backdrop-filter: blur(16px);
       }
       .nav { min-height: 76px; display: flex; align-items: center; gap: 30px; }
-      .brand { display: flex; align-items: center; gap: 11px; min-width: max-content; }
-      .mark {
-        width: 35px; height: 35px; display: grid; place-items: center;
-        background: var(--grad); clip-path: polygon(17% 0, 50% 23%, 83% 0, 63% 50%, 88% 100%, 50% 72%, 12% 100%, 38% 50%);
-        filter: drop-shadow(0 0 12px rgba(42, 208, 255, .6));
-      }
-      .wordmark { font: 800 24px/1 "Barlow Condensed", sans-serif; letter-spacing: .08em; }
-      .wordmark small { display: block; color: var(--cyan); font-size: 8px; letter-spacing: .18em; text-align: right; }
+      .brand { display: flex; align-items: center; min-width: max-content; }
+      .brand-logo { display: block; width: 176px; height: auto; filter: drop-shadow(0 0 7px rgba(43, 215, 255, .45)); }
       .navlinks { display: flex; align-items: center; justify-content: center; gap: 22px; flex: 1; color: #bac4d8; font-size: 14px; }
       .navlinks a:hover { color: var(--cyan); }
       .nav-action { display: flex; gap: 10px; align-items: center; }
@@ -149,7 +143,7 @@
         .shell { width: min(100% - 28px, 620px); }
         .nav { min-height: 65px; gap: 12px; }
         .navlinks { display: none; }
-        .wordmark { font-size: 20px; }
+        .brand-logo { width: 160px; }
         .nav-action .ghost { display: none; }
         .hero { min-height: 630px; padding-top: 80px; }
         .stats, .grid.four, .grid.three { grid-template-columns: repeat(2, 1fr); }
@@ -164,7 +158,7 @@
     <div class="ticker"><div class="ticker-track">EUR/USD 1.0842 <span class="up">+0.12%</span> · XAU/USD 2,338.40 <span class="up">+0.43%</span> · GBP/USD 1.2748 <span class="down">-0.08%</span> · BTC/USD 67,242 <span class="up">+1.16%</span> · NASDAQ 18,447 <span class="up">+0.21%</span> · EUR/USD 1.0842 <span class="up">+0.12%</span> · XAU/USD 2,338.40 <span class="up">+0.43%</span> · GBP/USD 1.2748 <span class="down">-0.08%</span> · BTC/USD 67,242 <span class="up">+1.16%</span></div></div>
     <header>
       <div class="shell nav">
-        <a class="brand" href="#top" aria-label="SiriusX Prime home"><span class="mark"></span><span class="wordmark">SIRIUS X<small>QUANTITATIVE SOLUTIONS</small></span></a>
+        <a class="brand" href="#top" aria-label="SiriusX Prime home"><img class="brand-logo" src="assets/sirius-x-quantitative-solutions-logo.png" alt="Sirius X Quantitative Solutions" /></a>
         <nav class="navlinks" aria-label="Primary navigation"><a href="#features">Features</a><a href="#tools">Tools</a><a href="#products">Markets</a><a href="#opportunity">IB Program</a><a href="#faq">FAQ</a></nav>
         <div class="nav-action"><a class="button ghost external-login" href="https://client.siriusxprime.com" target="_blank" rel="noopener noreferrer">Log in</a><a class="button primary external-login" href="https://client.siriusxprime.com/auth/register" target="_blank" rel="noopener noreferrer">Sign Up</a></div>
       </div>
